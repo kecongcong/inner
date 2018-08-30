@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: @profiles.id@
+mybatis:
+    mapper-locations: classpath*:mapper/*Mapper.xml
+management:
+  health:
+    redis:
+      enabled: false
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

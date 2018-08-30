@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.inner</groupId>
+    <artifactId>inner</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>inner</name>
+    <description>inner project for Spring Boot</description>
+
+    <modules>
+        <module>inner-common</module>
+        <module>inner-web</module>
+        <module>inner-base-api</module>
+        <module>inner-base-service</module>
+        <module>inner-article-api</module>
+        <module>inner-article-service</module>
+    </modules>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.4.RELEASE</version>
+        <relativePath/>
+        <!-- lookup parent from repository -->
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <mysql.version>5.1.35</mysql.version>
+        <alibaba.version>1.1.0</alibaba.version>
+        <pagehelper.version>4.1.6</pagehelper.version>
+        <redis.version>1.4.7.RELEASE</redis.version>
+        <mybatis.version>1.3.1</mybatis.version>
+        <dubbo.version>2.0.0</dubbo.version>
+        <zk.version>3.4.8</zk.version>
+        <zkclient.version>0.10</zkclient.version>
+        <swagger.version>2.6.1</swagger.version>
+        <jasypt.version>2.1.0</jasypt.version>
+    </properties>
+
+    <dependencies>
+        <!--spring boot项目引入的solr的依赖-->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-solr</artifactId>
+        </dependency>
+        <!--dubbo-springBoot依赖-->
+        <dependency>
+            <groupId>com.alibaba.spring.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>${dubbo.version}</version>
+        </dependency>
+        <!--zookeeper依赖-->
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>${zk.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>${zkclient.version}</version>
+        </dependency>
+        <!-- swagger 插件-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <!-- lombok依赖 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <!-- dev -->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profiles.id>dev</profiles.id>
+            </properties>
+        </profile>
+        <!-- test -->
+        <profile>
+            <id>test</id>
+            <properties>
+                <profiles.id>test</profiles.id>
+            </properties>
+        </profile>
+        <!-- production -->
+        <profile>
+            <id>prod</id>
+            <properties>
+                <profiles.id>prod</profiles.id>
+            </properties>
+        </profile>
+    </profiles>
+</project>

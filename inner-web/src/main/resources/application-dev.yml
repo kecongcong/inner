@@ -1,0 +1,32 @@
+server:
+    port: 8090
+    tomcat:
+      uri-encoding: utf-8
+logging:
+    file: ./inner.log
+#  level:
+#      com.inner.api: debug
+jasypt:
+  encryptor:
+    password: xxxx
+spring:
+    datasource:
+        url: jdbc:mysql://47.98.155.173:3306/inner-system?useUnicode=true&characterEncoding=utf-8
+        username: kecc
+        password: ENC(hoDsiPtr91W/n+YjZnM1ZcsM9ayYbe6c)
+        driver-class-name: com.mysql.jdbc.Driver
+    dubbo:
+        application:
+          name: inner-provider
+        registry:
+          address: zookeeper://127.0.0.1:2161
+        protocol:
+          name: dubbo
+          port: 20881
+          status : server
+#        scan: com.inner.service
+        provider:
+          timeout: 300000
+    data:
+        solr:
+          host: http://47.98.155.173:8983/solr
